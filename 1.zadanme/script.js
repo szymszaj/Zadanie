@@ -1,23 +1,25 @@
-function processData() {
-  const data = [
-      { id: 1, value: 10 },
-      { id: 2, value: 20 },
-      { id: 3, value: 30 },
-      { id: 4, value: 40 },
-      { id: 5, value: 50 }
+function processOrders() {
+  const orders = [
+    { orderId: 1, customer: "Alice", amount: 250, status: "completed" },
+    { orderId: 2, customer: "Bob", amount: 150, status: "pending" },
+    { orderId: 3, customer: "Charlie", amount: 300, status: "completed" },
+    { orderId: 4, customer: "David", amount: 100, status: "canceled" },
+    { orderId: 5, customer: "Eve", amount: 200, status: "completed" },
   ];
 
-  let processedData = [];
-  for (let i = 0; i < data.length; i++) {
-      if (data[i].value > 20) {
-          processedData.push({
-              id: data[i].id,
-              newValue: data[i].value * 2
-          });
-      }
+  let processedOrders = [];
+  for (let i = 0; i < orders.length; i++) {
+    if (orders[i].status === "completed") {
+      processedOrders.push({
+        orderId: orders[i].orderId,
+        customer: orders[i].customer,
+        amount: orders[i].amount,
+        discount: orders[i].amount * 0.1,
+      });
+    }
   }
 
-  return `Processed data: ${JSON.stringify(processedData)}`;
+  return `Processed orders: ${JSON.stringify(processedOrders)}`;
 }
 
-console.log(processData());
+console.log(processOrders());
